@@ -7,6 +7,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Font;
 import java.util.Calendar;
 import java.util.Date;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FrmDatBan extends JFrame {
 
@@ -61,6 +63,14 @@ public class FrmDatBan extends JFrame {
 
         txtGhiChu = new JTextField();
         txtGhiChu.setColumns(10);
+        
+        JButton btnLuu = new JButton("Lưu");
+        btnLuu.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
+        
+        JButton btnHuy = new JButton("Hủy");
 
         GroupLayout gl_contentPane = new GroupLayout(contentPane);
         gl_contentPane.setHorizontalGroup(
@@ -85,6 +95,12 @@ public class FrmDatBan extends JFrame {
         				.addComponent(txtTenBan, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
         				.addComponent(spnNgayDat, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         			.addContainerGap(118, Short.MAX_VALUE))
+        		.addGroup(gl_contentPane.createSequentialGroup()
+        			.addGap(102)
+        			.addComponent(btnLuu, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+        			.addGap(69)
+        			.addComponent(btnHuy, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(161, Short.MAX_VALUE))
         );
         gl_contentPane.setVerticalGroup(
         	gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -111,7 +127,11 @@ public class FrmDatBan extends JFrame {
         			.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
         				.addComponent(lblGhiChu)
         				.addComponent(txtGhiChu, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        			.addContainerGap(100, Short.MAX_VALUE))
+        			.addGap(18)
+        			.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(btnLuu, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(btnHuy, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+        			.addContainerGap(49, Short.MAX_VALUE))
         );
         contentPane.setLayout(gl_contentPane);
     }
