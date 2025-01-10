@@ -18,6 +18,8 @@ public class frmDanhmuc extends JFrame {
     private JTextField txtTenDanhMuc;
     private JTable table;
     private danhmuc danhMuc = new danhmuc(); // Khởi tạo đối tượng DanhMuc
+    
+    
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {

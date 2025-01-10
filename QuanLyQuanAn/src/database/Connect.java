@@ -8,7 +8,7 @@ public class Connect {
     // Kết nối đến cơ sở dữ liệu
     public void connectSQL() {
         try {
-            String url = "jdbc:mysql://localhost:3306/qlqa"; // Đảm bảo db_name là đúng
+            String url = "jdbc:mysql://localhost:3306/quanlyquanan"; // Đảm bảo db_name là đúng
             String user = "root"; // Đảm bảo username là đúng
             String password = ""; // Đảm bảo password là đúng
             if (conn == null || conn.isClosed()) {

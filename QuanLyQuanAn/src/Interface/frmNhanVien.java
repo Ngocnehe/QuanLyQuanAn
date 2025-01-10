@@ -24,7 +24,7 @@ public class frmNhanVien extends JFrame {
 
     // Kết nối cơ sở dữ liệu MySQL
     private Connection getConnection() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/qlqa";
+        String url = "jdbc:mysql://localhost:3306/quanlyquanan";
         String user = "root";
         String password = "";
         return DriverManager.getConnection(url, user, password);

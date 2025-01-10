@@ -69,7 +69,7 @@ public class frmdangnhap extends JFrame implements ActionListener {
 
     private void loginUser(String username, String password) {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/qlqa", "root", "");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quanlyquanan", "root", "");
             String sql = "SELECT * FROM dangnhap WHERE tendangnhap = ? AND matkhau = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
