@@ -108,7 +108,7 @@ public class frmDanhMuc extends JFrame {
             }
         });
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setPreferredSize(new Dimension(750, 300)); // Đặt kích thước cho bảng
+        scrollPane.setPreferredSize(new Dimension(550, 300)); // Đặt kích thước cho bảng
         panelTable.add(scrollPane);
 
         loadData();

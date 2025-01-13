@@ -73,12 +73,19 @@ public class frmTrangChu extends JFrame {
         JPanel panelMonAn = (JPanel) new frmMonAn().getContentPane();
         JPanel panelDanhMuc = (JPanel) new frmDanhMuc().getContentPane();
         JPanel panelThongKe = (JPanel) new frmThongKe().getContentPane();
+        JPanel panelBanAn = (JPanel) new frmban().getContentPane();
+        JPanel panelDatBan = (JPanel) new FrmDatBan().getContentPane();
+        JPanel panelDonHang = (JPanel) new FrmDonHang().getContentPane();
 
         // Thêm các panel vào contentPanel sử dụng CardLayout
         contentPanel.add(panelNhanVien, "Nhân Viên");
         contentPanel.add(panelMonAn, "Món Ăn");
         contentPanel.add(panelDanhMuc, "Danh Mục");
         contentPanel.add(panelThongKe, "Thống Kê");
+        contentPanel.add(panelBanAn, "Bàn Ăn");
+        contentPanel.add(panelDatBan, "Đơn Đặt Bàn");
+        contentPanel.add(panelDonHang,"Đơn Hàng");
+        
 
         // Tạo panel cho phần tiêu đề (Logo và tên quán)
         JPanel headerPanel = new JPanel();
@@ -143,6 +150,7 @@ public class frmTrangChu extends JFrame {
                 cardLayout.show(contentPanel, "Thống Kê");
             }
         });
+        
     }
 
     public static void main(String[] args) {
