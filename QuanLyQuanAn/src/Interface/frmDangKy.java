@@ -5,14 +5,14 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.sql.*;
 
-public class frmdangky extends JFrame implements ActionListener {
+public class frmDangKy extends JFrame implements ActionListener {
     private JTextField tfUsername;
     private JPasswordField pfPassword;
     private JComboBox<String> cbRole;
     private JButton btnRegister;
     private JLabel lblAlreadyHaveAccount;
 
-    public frmdangky() {
+    public frmDangKy() {
         setTitle("Đăng ký");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,7 +48,7 @@ public class frmdangky extends JFrame implements ActionListener {
         lblAlreadyHaveAccount.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new frmdangnhap().setVisible(true);
+                new frmDangNhap().setVisible(true);
                 dispose();
             }
         });
@@ -97,7 +97,7 @@ public class frmdangky extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(this, "Đăng ký thành công!");
             conn.close();
 
-            new frmdangnhap().setVisible(true);
+            new frmDangNhap().setVisible(true);
             dispose();
 
         } catch (SQLException ex) {
@@ -107,6 +107,6 @@ public class frmdangky extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new frmdangky().setVisible(true);
+        new frmDangKy().setVisible(true);
     }
 }

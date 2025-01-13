@@ -5,13 +5,13 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.sql.*;
 
-public class frmdangnhap extends JFrame implements ActionListener {
+public class frmDangNhap extends JFrame implements ActionListener {
     private JTextField tfUsername;
     private JPasswordField pfPassword;
     private JButton btnLogin, btnExit;
     private JLabel lblTitle, lblRegister;
 
-    public frmdangnhap() {
+    public frmDangNhap() {
         setTitle("Đăng nhập");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,7 +47,7 @@ public class frmdangnhap extends JFrame implements ActionListener {
         lblRegister.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new frmdangky().setVisible(true);
+                new frmDangKy().setVisible(true);
                 dispose();
             }
         });
@@ -79,11 +79,11 @@ public class frmdangnhap extends JFrame implements ActionListener {
                 String role = rs.getString("vaitro");
                 if ("Quản lý".equals(role)) {
                     JOptionPane.showMessageDialog(this, "Chào mừng, Quản lý!");
-                    new frmtrangchu().setVisible(true); // Mở giao diện Quản lý
+                    new frmTrangChu().setVisible(true); // Mở giao diện Quản lý
                     dispose();
                 } else if ("Nhân viên".equals(role)) {
                     JOptionPane.showMessageDialog(this, "Chào mừng, Nhân viên!");
-                    new frmtrangchu().setVisible(true); // Mở giao diện Nhân viên
+                    new FrmDonHang().setVisible(true); // Mở giao diện Nhân viên
                     dispose();
                 }
             } else {
@@ -97,6 +97,6 @@ public class frmdangnhap extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new frmdangnhap().setVisible(true);
+        new frmDangNhap().setVisible(true);
     }
 }

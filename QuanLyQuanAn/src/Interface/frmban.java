@@ -6,7 +6,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
-public class FrmBan extends JFrame {
+public class frmban extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
@@ -16,7 +16,7 @@ public class FrmBan extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             try {
-                FrmBan frame = new FrmBan();
+                frmban frame = new frmban();
                 frame.setVisible(true);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -24,7 +24,7 @@ public class FrmBan extends JFrame {
         });
     }
 
-    public FrmBan() {
+    public frmban() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPane = new JPanel();

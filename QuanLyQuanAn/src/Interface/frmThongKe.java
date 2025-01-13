@@ -3,14 +3,16 @@ package Interface;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.sql.*;
 
-public class ThongKeDoanhThu extends JFrame implements ActionListener {
+public class frmThongKe extends JFrame implements ActionListener {
     private JComboBox<String> cbCriteria;
     private JButton btnGenerate;
     private JTextArea taResult;
+    private Proccess.thongke thongKe;
 
-    public ThongKeDoanhThu() {
+    public frmThongKe() {
+        thongKe = new Proccess.thongke(this);
+
         setTitle("Thống kê doanh thu");
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,6 +26,9 @@ public class ThongKeDoanhThu extends JFrame implements ActionListener {
         JLabel lblTitle = new JLabel("THỐNG KÊ DOANH THU", JLabel.CENTER);
         lblTitle.setFont(new Font("Arial", Font.BOLD, 24));
         lblTitle.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        lblTitle.setOpaque(true); // Cho phép thay đổi màu nền
+        lblTitle.setBackground(new Color(70, 130, 180)); // Đổi màu nền giống màu của frmNhanVien
+        lblTitle.setForeground(Color.WHITE); // Đổi màu chữ thành màu trắng
         add(lblTitle, BorderLayout.NORTH);
 
         JPanel panel = new JPanel(new GridBagLayout());
@@ -69,42 +74,19 @@ public class ThongKeDoanhThu extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnGenerate) {
             String criteria = (String) cbCriteria.getSelectedItem();
-            generateReport(criteria);
+            thongKe.generateReport(criteria);
         }
     }
 
-    private void generateReport(String criteria) {
-        String query = "";
-        if ("Theo ngày".equals(criteria)) {
-            query = "SELECT DATE(ngaytao) AS date, SUM(tongtien) AS total_revenue FROM donhang GROUP BY DATE(ngaytao)";
-        } else if ("Theo tháng".equals(criteria)) {
-            query = "SELECT YEAR(ngaytao) AS year, MONTH(ngaytao) AS month, SUM(tongtien) AS total_revenue FROM donhang GROUP BY YEAR(ngaytao), MONTH(ngaytao)";
-        } else if ("Theo nhân viên".equals(criteria)) {
-            query = "SELECT nv.tennv AS employee, SUM(dh.tongtien) AS total_revenue FROM donhang dh JOIN nhanvien nv ON dh.id_nhanvien = nv.id_nhanvien GROUP BY nv.tennv";
-        }
+    public JComboBox<String> getCbCriteria() {
+        return cbCriteria;
+    }
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/quanlyquanan", "root", "");
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
-
-            taResult.setText("");
-            while (rs.next()) {
-                if ("Theo ngày".equals(criteria)) {
-                    taResult.append("Ngày: " + rs.getString("date") + " - Doanh thu: " + rs.getDouble("total_revenue") + "\n");
-                } else if ("Theo tháng".equals(criteria)) {
-                    taResult.append("Năm: " + rs.getInt("year") + " Tháng: " + rs.getInt("month") + " - Doanh thu: " + rs.getDouble("total_revenue") + "\n");
-                } else if ("Theo nhân viên".equals(criteria)) {
-                    taResult.append("Nhân viên: " + rs.getString("employee") + " - Doanh thu: " + rs.getDouble("total_revenue") + "\n");
-                }
-            }
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Lỗi truy vấn cơ sở dữ liệu.");
-        }
+    public JTextArea getTaResult() {
+        return taResult;
     }
 
     public static void main(String[] args) {
-        new ThongKeDoanhThu().setVisible(true);
+        new frmThongKe().setVisible(true);
     }
 }
